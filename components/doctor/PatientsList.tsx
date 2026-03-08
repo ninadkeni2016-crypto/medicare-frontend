@@ -28,7 +28,7 @@ export default function PatientsList() {
 
             {filtered.map((patient) => (
                 <TouchableOpacity key={patient.id} activeOpacity={0.7} style={{ backgroundColor: '#fff', borderRadius: 16, padding: 14, borderWidth: 1, borderColor: '#f1f5f9', flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-                    <Image source={{ uri: patient.avatar }} style={{ width: 48, height: 48, borderRadius: 12 }} />
+                    <Image source={typeof patient.avatar === 'string' ? { uri: patient.avatar } : patient.avatar} style={{ width: 48, height: 48, borderRadius: 12 }} />
                     <View style={{ flex: 1 }}>
                         <Text style={{ fontWeight: '600', fontSize: 14, color: '#0284c7' }}>{patient.name}</Text>
                         <Text style={{ fontSize: 12, color: '#64748b' }}>{patient.age} yrs • {patient.gender} • {patient.condition}</Text>

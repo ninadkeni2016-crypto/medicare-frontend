@@ -170,23 +170,32 @@ export default function RazorpayCheckout({
     return (
         <Modal visible={visible} animationType="slide" onRequestClose={onClose}>
             <View style={{ flex: 1, backgroundColor: '#f8fafc' }}>
-                <WebView
-                    ref={webviewRef}
-                    source={{ html: htmlContent }}
-                    onMessage={handleMessage}
-                    javaScriptEnabled={true}
-                    domStorageEnabled={true}
-                    startInLoadingState={true}
-                    renderLoading={() => (
-                        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f8fafc' }}>
-                            <ActivityIndicator size="large" color="#0284c7" />
-                        </View>
-                    )}
-                    style={{ flex: 1 }}
-                    originWhitelist={['*']}
-                    mixedContentMode="always"
-                    allowsInlineMediaPlayback={true}
-                />
+                {Platform.OS === 'web' ? (
+                    <iframe
+                        srcDoc={htmlContent}
+                        style={{ flex: 1, border: 'none', width: '100%', height: '100%' }}
+                        title="Razorpay Checkout"
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                    />
+                ) : (
+                    <WebView
+                        ref={webviewRef}
+                        source={{ html: htmlContent }}
+                        onMessage={handleMessage}
+                        javaScriptEnabled={true}
+                        domStorageEnabled={true}
+                        startInLoadingState={true}
+                        renderLoading={() => (
+                            <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f8fafc' }}>
+                                <ActivityIndicator size="large" color="#0284c7" />
+                            </View>
+                        )}
+                        style={{ flex: 1 }}
+                        originWhitelist={['*']}
+                        mixedContentMode="always"
+                        allowsInlineMediaPlayback={true}
+                    />
+                )}
             </View>
         </Modal>
     );

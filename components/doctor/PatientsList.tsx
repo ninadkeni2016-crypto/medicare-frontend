@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, Image } from 'reac
 import { Search, Phone, Calendar, ChevronRight } from 'lucide-react-native';
 
 const mockPatients = [
-    { id: '0', name: 'Shardul Mahadik', age: 14, gender: 'Male', phone: '+91 98765 00000', lastVisit: 'Mar 8, 2026', condition: 'Polio', avatar: Image.resolveAssetSource(require('../../assets/images/shardul.png')).uri },
+    { id: '0', name: 'Shardul Mahadik', age: 14, gender: 'Male', phone: '+91 98765 00000', lastVisit: 'Mar 8, 2026', condition: 'Polio', avatar: require('../../assets/images/shardul.png') },
     { id: '1', name: 'Arjun Verma', age: 32, gender: 'Male', phone: '+91 98765 43210', lastVisit: 'Mar 6, 2026', condition: 'Hypertension', avatar: 'https://randomuser.me/api/portraits/men/75.jpg' },
     { id: '2', name: 'Kavya Reddy', age: 28, gender: 'Female', phone: '+91 87654 32109', lastVisit: 'Mar 5, 2026', condition: 'Diabetes', avatar: 'https://randomuser.me/api/portraits/women/26.jpg' },
     { id: '3', name: 'Rohan Gupta', age: 45, gender: 'Male', phone: '+91 76543 21098', lastVisit: 'Mar 4, 2026', condition: 'Heart Disease', avatar: 'https://randomuser.me/api/portraits/men/22.jpg' },
